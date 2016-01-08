@@ -9,6 +9,11 @@ $ cp .env.example .env
 ```
 Edit `.env` to appropriate values.
 
+## Run
+```
+$ npm start
+```
+
 ## Endpoints
 ### /franchises
 ```
