@@ -15,6 +15,22 @@ $ npm start
 ```
 
 ## Endpoints
+### /services
+```
+get /services
+post /services
+```
+#### Example response
+```javascript
+[
+  {
+    "_id": "568f913417a52e38604b4e37",
+    "name": "Billing",
+    "__v": 0
+  }
+]
+```
+
 ### /franchises
 ```
 get /franchises
