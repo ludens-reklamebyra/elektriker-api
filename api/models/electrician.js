@@ -4,7 +4,7 @@ const ElectricianSchema = new mongoose.Schema({
   name: {type: String, required: true},
   logo: String,
   website: String,
-  franchise: {type: Schema.ObjectId, ref: 'Franchise'},
+  franchise: {type: mongoose.Schema.ObjectId, ref: 'Franchise'},
   email: String,
   phone: String,
   boligpartnerSite: String,
@@ -18,7 +18,8 @@ const ElectricianSchema = new mongoose.Schema({
   geo: {
     type: {type: String},
     coordinates: [Number]
-  }
+  },
+  services: [{type: mongoose.Schema.ObjectId, ref: 'Service'}]
 });
 
 ElectricianSchema.index({'geo': '2dsphere'});
