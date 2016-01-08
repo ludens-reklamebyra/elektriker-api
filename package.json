@@ -1,0 +1,25 @@
+{
+  "name": "elektriker-api",
+  "version": "0.0.1",
+  "description": "ELKO Boligpartner database.",
+  "main": "start.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludens-reklamebyra/elektriker-api.git"
+  },
+  "keywords": [
+    "elko",
+    "boligpartner",
+    "api",
+    "electricians"
+  ],
+  "author": "Stian Bakkane <stianba@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ludens-reklamebyra/elektriker-api/issues"
+  },
+  "homepage": "https://github.com/ludens-reklamebyra/elektriker-api#readme"
+}
