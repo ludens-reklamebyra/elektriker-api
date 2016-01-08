@@ -10,12 +10,7 @@ const FranchiseSchema = new mongoose.Schema({
     place: String,
     county: String,
     country: String
-  },
-  geo: {
-    type: {type: String},
-    coordinates: [Number]
   }
 });
 
-FranchiseSchema.index({'geo': '2dsphere'});
 mongoose.model('Franchise', FranchiseSchema);
