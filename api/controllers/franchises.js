@@ -1,9 +1,22 @@
 import mongoose from 'mongoose';
+import {_extend} from 'util';
 import franchiseSchema from '../models/franchise';
 
 const Franchise = mongoose.model('Franchise');
 
 class Franchises {
+
+  static load(req, res, next) {
+    Franchise.findById(req.params.franchise, (err, franchise) => {
+      if (err) res.json(err);
+
+      if (!franchise) return res.json({error: 'No franchise found!'});
+
+      req.franchise = franchise;
+      next();
+    })
+  }
+
   static index(req, res) {
     Franchise.find({}, (err, franchises) => {
       if (err) return res.json(err);
@@ -19,6 +32,29 @@ class Franchises {
       res.json(franchise);
     });
   }
+
+  static show(req, res) {
+    res.json(req.franchise);
+  }
+
+  static update(req, res) {
+    _extend(req.franchise, req.body);
+    req.franchise.save(err => {
+      if (err) return res.json(err);
+      res.json(req.franchise);
+    });
+  }
+
+  static destroy(req, res) {
+    _extend(req.franchise, req.body);
+    req.franchise.remove({
+      id: req.params.franchise
+    }, (err, franchise) => {
+      if (err) return res.json(err);
+      res.json({message: 'Franchise deleted successfully!'});
+    })
+  }
+
 }
 
 export default Franchises;
