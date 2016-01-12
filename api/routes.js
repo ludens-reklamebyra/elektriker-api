@@ -10,8 +10,12 @@ router.get('/', (req, res) => {
 });
 
 // Service routes
+router.param('service', Services.load);
 router.get('/services', Services.index);
+router.get('/services/:service', Services.show);
 router.post('/services', adminAuth, Services.create);
+router.put('/services/:service', adminAuth, Services.update);
+router.delete('/services/:service', adminAuth, Services.destroy);
 
 // Franchise routes
 router.get('/franchises', Franchises.index);
