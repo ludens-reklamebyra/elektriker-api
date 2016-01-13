@@ -29,12 +29,15 @@ router.delete('/franchises/:franchise', adminAuth, Franchises.destroy);
 // Electrician routes
 router.param('electrician', Electricians.load);
 router.get('/electricians', Electricians.index);
+router.get('/electricians/search', Electricians.search);
+router.get('/electricians/:electrician', Electricians.show);
 router.post('/electricians', adminAuth, Electricians.create);
 router.put(
   '/electricians/:electrician',
   adminAuth,
   Electricians.update
 );
-router.get('/electricians/search', Electricians.search);
+router.delete('/electricians/:electrician',adminAuth, Electricians.destroy);
+
 
 export default router;

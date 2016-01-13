@@ -45,12 +45,8 @@ class Services {
   }
 
   static destroy(req, res) {
-    _extend(req.service, req.body);
-    req.service.remove({
-      _id: req.params.service
-    }, (err, service) => {
-      if (err) return res.json(err);
-      res.json({message: 'Service deleted successfully'});
+    req.service.remove(err => {
+      res.json({message: 'Delete was successful'});
     });
   }
 }

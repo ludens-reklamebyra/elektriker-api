@@ -35,6 +35,10 @@ class Electricians {
     });
   }
 
+  static show(req, res) {
+    res.json(req.electrician);
+  }
+
   static search(req, res) {
     Electrician.search(req.query, (err, electricians) => {
       if (err) return res.json(err);
@@ -47,6 +51,12 @@ class Electricians {
     req.electrician.save(err => {
       if (err) return res.json(err);
       res.json(req.electrician);
+    });
+  }
+
+  static destroy(req, res) {
+    req.electrician.remove(err => {
+      res.json({message: 'Delete was successful'});
     });
   }
 }

@@ -10,7 +10,14 @@ const ElectricianSchema = new mongoose.Schema({
   boligpartnerSite: String,
   address: {
     line: String,
-    zip: Number,
+    zip: String,
+    place: String,
+    county: String,
+    country: String
+  },
+  addressPost: {
+    line: String,
+    zip: String,
     place: String,
     county: String,
     country: String
@@ -98,6 +105,13 @@ ElectricianSchema.statics = {
       const services = query.services.toLowerCase().split(',');
       queries.push({
         $match: {'services.cachedName': {$in: services}}
+      });
+    }
+
+    // search by zip code
+    if (query.zip) {
+      queries.push({
+        $match: {'address.zip': query.zip}
       });
     }
 
