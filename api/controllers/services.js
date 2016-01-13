@@ -6,17 +6,14 @@ const Service = mongoose.model('Service');
 
 class Services {
   static load(req, res, next) {
-    Service
-      .findById(req.params.service, (err, service) => {
-        if (err) return res.json(err);
+    Service.findById(req.params.service, (err, service) => {
+      if (err) return res.json(err);
 
-        if (!service) {
-          return res.json({error: 'No service found'});
-        }
+      if (!service) return res.json({error: 'No service found!'})
 
-        req.service = service;
-        next();
-      });
+      req.service = service;
+      next();
+    })
   }
 
   static index(req, res) {
@@ -35,11 +32,25 @@ class Services {
     });
   }
 
+  static show(req, res) {
+    res.json(req.service);
+  }
+
   static update(req, res) {
     _extend(req.service, req.body);
     req.service.save(err => {
       if (err) return res.json(err);
       res.json(req.service);
+    });
+  }
+
+  static destroy(req, res) {
+    _extend(req.service, req.body);
+    req.service.remove({
+      _id: req.params.service
+    }, (err, service) => {
+      if (err) return res.json(err);
+      res.json({message: 'Service deleted successfully'});
     });
   }
 }
