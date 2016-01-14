@@ -38,6 +38,7 @@
     "mongoose": "^4.3.4"
   },
   "devDependencies": {
+    "babel": "^6.3.26",
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
     "mockgoose": "^5.2.2",
