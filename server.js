@@ -27,4 +27,4 @@ mongoose.connect('mongodb://'
   + process.env.MONGO_DB
 );
 
-module.exports = app;
+module.exports = app; // Has to be module.exports
