@@ -1,4 +1,4 @@
-# elektriker-api
+# elektriker-api [![Build Status](https://travis-ci.org/ludens-reklamebyra/elektriker-api.svg?branch=master)](https://travis-ci.org/ludens-reklamebyra/elektriker-api)
 ELKO Boligpartner database.
 
 ## Install
