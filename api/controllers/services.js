@@ -13,7 +13,7 @@ class Services {
 
       req.service = service;
       next();
-    })
+    });
   }
 
   static index(req, res) {
