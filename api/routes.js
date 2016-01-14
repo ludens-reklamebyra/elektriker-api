@@ -2,6 +2,7 @@ import express from 'express';
 import {adminAuth} from './auth';
 import Services from './controllers/services';
 import Franchises from './controllers/franchises';
+import Electricians from './controllers/electricians';
 
 const router = express.Router();
 
@@ -24,5 +25,19 @@ router.get('/franchises/:franchise', Franchises.show)
 router.post('/franchises', adminAuth, Franchises.create);
 router.put('/franchises/:franchise', adminAuth, Franchises.update);
 router.delete('/franchises/:franchise', adminAuth, Franchises.destroy);
+
+// Electrician routes
+router.param('electrician', Electricians.load);
+router.get('/electricians', Electricians.index);
+router.get('/electricians/search', Electricians.search);
+router.get('/electricians/:electrician', Electricians.show);
+router.post('/electricians', adminAuth, Electricians.create);
+router.put(
+  '/electricians/:electrician',
+  adminAuth,
+  Electricians.update
+);
+router.delete('/electricians/:electrician',adminAuth, Electricians.destroy);
+
 
 export default router;

@@ -5,7 +5,6 @@ import serviceSchema from '../models/service';
 const Service = mongoose.model('Service');
 
 class Services {
-
   static load(req, res, next) {
     Service.findById(req.params.service, (err, service) => {
       if (err) return res.json(err);
@@ -46,15 +45,10 @@ class Services {
   }
 
   static destroy(req, res) {
-    _extend(req.service, req.body);
-    req.service.remove({
-      _id: req.params.service
-    }, (err, service) => {
-      if (err) return res.json(err);
-      res.json({message: 'Service deleted successfully'});
+    req.service.remove(err => {
+      res.json({message: 'Delete was successful'});
     });
   }
-
 }
 
 export default Services;

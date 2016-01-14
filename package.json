@@ -8,7 +8,7 @@
     "npm": "3.4.1"
   },
   "scripts": {
-    "test": "jasmine",
+    "test": "mocha",
     "start": "node start.js"
   },
   "repository": {

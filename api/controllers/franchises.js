@@ -46,13 +46,9 @@ class Franchises {
   }
 
   static destroy(req, res) {
-    _extend(req.franchise, req.body);
-    req.franchise.remove({
-      id: req.params.franchise
-    }, (err, franchise) => {
-      if (err) return res.json(err);
-      res.json({message: 'Franchise deleted successfully!'});
-    })
+    req.franchise.remove(err => {
+      res.json({message: 'Delete was successful'});
+    });
   }
 
 }
