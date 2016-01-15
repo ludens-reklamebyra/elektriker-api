@@ -60,3 +60,81 @@ https://dev-elektriker-api.herokuapp.com/services/5697bd1b4c75ffb00cdf33db
 
 #### DELETE /services/[service id]
 - **Required permissions:** admin
+
+### franchise
+#### GET /franchises
+- **Required permissions:** read
+- **Examples**:
+```
+https://dev-elektriker-api.herokuapp.com/franchises
+```
+```javascript
+[
+  {
+    "_id": "5698f39c616c420f0048a039",
+    "name": "Franchise",
+    "logo": "logo.png",
+    "website": "http://example.com",
+    "__v": 0,
+    "address": {
+      "line": "Vitneskjukji 21",
+      "zip": 6589,
+      "place": "Helheim",
+      "county": "Vestnes-Agder",
+      "country": "no"
+    }
+  }
+]
+```
+
+#### GET /franchises/[franchise id]
+- **Required permissions:** read
+- **Examples**:
+```
+https://dev-elektriker-api.herokuapp.com/franchises/5698f39c616c420f0048a039
+```
+```javascript
+{
+  "_id": "5698f39c616c420f0048a039",
+  "name": "Franchise",
+  "logo": "logo.png",
+  "website": "http://example.com",
+  "__v": 0,
+  "address": {
+    "line": "Vitneskjukji 21",
+    "zip": 6589,
+    "place": "Helheim",
+    "county": "Vestnes-Agder",
+    "country": "no"
+  }
+}
+```
+
+#### POST /franchises
+- **Required permissions:** admin
+- **Arguments**:
+  - `name` (required)
+  - `logo`
+  - `website`
+  - `address`
+    - `line`
+    - `zip`
+    - `place`
+    - `county`
+    - `country`
+
+#### PUT /franchises/[franchise id]
+- **Required permissions:** admin
+- **Arguments**:
+  - `name` (required)
+  - `logo`
+  - `website`
+  - `address`
+    - `line`
+    - `zip`
+    - `place`
+    - `county`
+    - `country`
+
+#### DELETE /franchises/[franchise id]
+- **Required permissions:** admin
