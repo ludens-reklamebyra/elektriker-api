@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const mockgoose = require('mockgoose');
 const franchiseSchema = require('../api/models/franchise');
 const serviceSchema = require('../api/models/service');
+const electricianSchema = require('../api/models/electrician');
 const Franchise = mongoose.model('Franchise');
 const Service = mongoose.model('Service');
+const Electrician = mongoose.model('Electrician');
 
 mockgoose(mongoose);
 const app = require('../server');
@@ -364,15 +366,26 @@ describe('Services', () => {
   });
 
   describe('put /services/:service', () => {
+    const renameValue = 'pakkeland';
     const mock = [{
       _id: mongoose.Types.ObjectId(),
       name: 'testService'
     }];
 
+    const electricianMock = [{
+      _id: mongoose.Types.ObjectId(),
+      name: 'TestElectrician',
+      services: [{
+        _id: mock[0]._id
+      }]
+    }];
+
     before(done => {
       mockgoose.reset(() => {
         Service.collection.insert(mock, (err, data) => {
-          done(err);
+          Electrician.collection.insert(electricianMock, (err, data) => {
+            done(err);
+          });
         });
       });
     });
@@ -387,15 +400,27 @@ describe('Services', () => {
         });
     });
 
-    it('should update a service to set name as "pakkeland"', done => {
+    it(`should update a service to set name as "${renameValue}"`, done => {
       request(app)
         .put(`/services/${mock[0]._id}`)
         .set('x-admin-token', process.env.ADMIN_TOKEN)
-        .send({name: 'pakkeland'})
+        .send({name: renameValue})
         .expect(200)
         .end((err, res) => {
           expect(err).to.equal(null);
-          expect(res.body.name).to.equal('pakkeland');
+          expect(res.body.name).to.equal(renameValue);
+          done();
+        });
+    });
+
+    it('should update the cachedName relation in /electricians', done => {
+      request(app)
+        .get(`/electricians/${electricianMock[0]._id}`)
+        .expect(200)
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.body.services[0].cachedName)
+            .to.equal(renameValue.toLowerCase());
           done();
         });
     });
