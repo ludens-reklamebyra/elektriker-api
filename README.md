@@ -14,43 +14,49 @@ Edit `.env` to appropriate values.
 $ npm start
 ```
 
-## Endpoints
-### /services
+## API Reference
+### service
+#### GET /services
+- **Required permissions:** read
+- **Examples**:
 ```
-get /services
-post /services
+https://dev-elektriker-api.herokuapp.com/services
 ```
-#### Example response
 ```javascript
 [
   {
-    "_id": "568f913417a52e38604b4e37",
-    "name": "Billing",
-    "__v": 0
+    "_id": "5697bd1b4c75ffb00cdf33db",
+    "name": "Service 1"
+  },
+  {
+    "_id": "5697bd1b4c75ffb00cdf33db",
+    "name": "Service 2"
   }
 ]
 ```
 
-### /franchises
+#### GET /services/[service id]
+- **Required permissions:** read
+- **Examples**:
 ```
-get /franchises
-post /franchises
+https://dev-elektriker-api.herokuapp.com/services/5697bd1b4c75ffb00cdf33db
 ```
-#### Example response
 ```javascript
-[
-  {
-    "_id": "568f84f345deae0f00fe106c",
-    "name": "Man Bear Company",
-    "website": "http://ballefrans.no",
-    "logo": "http://www.eurasianet.org/sites/default/files/imagecache/galleria_fullscreen/Trilling-0845.jpg",
-    "__v": 0,
-    "address": {
-      "line": "test",
-      "zip": 5746,
-      "place": "Horda",
-      "country": "no"
-    }
-  }
-]
+{
+  "_id": "5697bd1b4c75ffb00cdf33db",
+  "name": "Service 1"
+}
 ```
+
+#### POST /services
+- **Required permissions:** admin
+- **Arguments**:
+  - `name` (required)
+
+#### PUT /services/[service id]
+- **Required permissions:** admin
+- **Arguments**:
+  - `name` (required)
+
+#### DELETE /services/[service id]
+- **Required permissions:** admin
