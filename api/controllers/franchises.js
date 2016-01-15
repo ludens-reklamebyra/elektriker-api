@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {_extend} from 'util';
+import deepExtend from 'deep-extend';
 import franchiseSchema from '../models/franchise';
 
 const Franchise = mongoose.model('Franchise');
@@ -38,7 +38,7 @@ class Franchises {
   }
 
   static update(req, res) {
-    _extend(req.franchise, req.body);
+    deepExtend(req.franchise, req.body);
     req.franchise.save(err => {
       if (err) return res.json(err);
       res.json(req.franchise);
