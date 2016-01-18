@@ -120,8 +120,8 @@ https://dev-elektriker-api.herokuapp.com/franchises/5698f39c616c420f0048a039
     - `line`
     - `zip`
     - `place`
-    - `county`
-    - `country`
+    - `county` (ISO 3166-2)
+    - `country` (ISO 3166-2)
 
 #### PUT /franchises/[franchise id]
 - **Required permissions:** admin
@@ -133,8 +133,8 @@ https://dev-elektriker-api.herokuapp.com/franchises/5698f39c616c420f0048a039
     - `line`
     - `zip`
     - `place`
-    - `county`
-    - `country`
+    - `county` (ISO 3166-2)
+    - `country` (ISO 3166-2)
 
 #### DELETE /franchises/[franchise id]
 - **Required permissions:** admin
