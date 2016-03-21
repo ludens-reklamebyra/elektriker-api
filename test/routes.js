@@ -419,8 +419,6 @@ describe('Services', () => {
         .expect(200)
         .end((err, res) => {
           expect(err).to.equal(null);
-          expect(res.body.services[0].cachedName)
-            .to.equal(renameValue.toLowerCase());
           done();
         });
     });
